@@ -1,0 +1,27 @@
+﻿{
+  "title": "Fabric Event Monitor",
+  "description": "Service Fabric Event Monitor",
+  "copyright": "Copyright © SceneSkope 2016",
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Microsoft.ServiceFabric.Services": "2.1.150",
+    "SceneSkope.ServiceFabric.Utilities": "1.0.0",
+    "SceneSkope.ServiceFabric.Seq": "1.0.0",
+    "Microsoft.Diagnostics.Tracing.EventSource.Redist": "1.1.28",
+    "Microsoft.Diagnostics.Tracing.TraceEvent": "1.0.41"
+  },
+
+  "frameworks": {
+    "net452": {
+
+    }
+  },
+  "runtimes": {
+    "win10-x64": {}
+  }
+
+}
