@@ -8,11 +8,11 @@
   },
 
   "dependencies": {
-    "Microsoft.ServiceFabric.Services": "2.1.150",
-    "SceneSkope.ServiceFabric.Utilities": "1.0.7",
-    "SceneSkope.ServiceFabric.Seq": "1.0.7",
     "Microsoft.Diagnostics.Tracing.EventSource.Redist": "1.1.28",
-    "Microsoft.Diagnostics.Tracing.TraceEvent": "1.0.41"
+    "Microsoft.Diagnostics.Tracing.TraceEvent": "1.0.41",
+    "Microsoft.ServiceFabric.Services": "2.1.163",
+    "SceneSkope.ServiceFabric.Seq": "1.0.9",
+    "SceneSkope.ServiceFabric.Utilities": "1.0.9"
   },
 
   "frameworks": {
