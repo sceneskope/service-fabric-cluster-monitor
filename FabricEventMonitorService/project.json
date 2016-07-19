@@ -4,7 +4,8 @@
   "copyright": "Copyright © SceneSkope 2016",
   "version": "1.0.0-*",
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "platform": "x64"
   },
 
   "dependencies": {

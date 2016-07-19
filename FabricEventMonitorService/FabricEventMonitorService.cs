@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Session;
 using Microsoft.ServiceFabric.Services.Runtime;
+using SceneSkope.ServiceFabric.Seq;
 using Serilog;
 using Serilog.Events;
 using Serilog.Parsing;
@@ -16,6 +17,21 @@ namespace FabricEventMonitorService
     internal sealed class FabricEventMonitorService : StatelessService
     {
         const string ListenerName = "FabricClusterMonitor";
+
+        private ILogger _log;
+        private ILogger Log
+        {
+            get
+            {
+                var log = _log;
+                if (log == null)
+                {
+                    log = ServiceLogger.CreateLogger(this);
+                    _log = log;
+                }
+                return log;
+            }
+        }
 
         public FabricEventMonitorService(StatelessServiceContext context)
             : base(context)
@@ -35,11 +51,17 @@ namespace FabricEventMonitorService
                 session.EnableProvider("Microsoft-ServiceFabric-Services", providerLevel: TraceEventLevel.Verbose);
                 try
                 {
-                    await Task.Factory.StartNew(session.Source.Process, cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                    Task.Factory.StartNew(session.Source.Process, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+                    await Task.Delay(Timeout.Infinite, cancellationToken);
                 }
                 finally
                 {
+                    Log.Information("Stopping processing");
                     session.Source.StopProcessing();
+                    Log.Information("Stopped processing");
                 }
             }
         }
