@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Description>Service Fabric Event Monitor</Description>
+    <Copyright>Copyright © SceneSkope 2016, 2017</Copyright>
+    <AssemblyTitle>Fabric Event Monitor</AssemblyTitle>
+    <TargetFramework>net452</TargetFramework>
+    <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
+    <IsServiceFabricServiceProject>True</IsServiceFabricServiceProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Diagnostics.Tracing.EventSource.Redist" Version="1.1.28" />
+    <PackageReference Include="Microsoft.Diagnostics.Tracing.TraceEvent" Version="1.0.41" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="2.6.210" />
+    <PackageReference Include="ServiceFabric.Serilog" Version="2.6.75" />
+    <PackageReference Include="ServiceFabric.Serilog.Seq" Version="2.6.75" />
+  </ItemGroup>
+
+</Project>

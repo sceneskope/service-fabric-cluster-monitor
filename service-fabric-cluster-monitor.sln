@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "FabricClusterMonitor", "FabricClusterMonitor\FabricClusterMonitor.sfproj", "{6BC7CBE9-6137-4DC7-B37B-D2D47CBE5266}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FabricEventMonitorService", "FabricEventMonitorService\FabricEventMonitorService.xproj", "{D5150601-12A3-4B98-AB27-1644E632DF85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricEventMonitorService", "FabricEventMonitorService\FabricEventMonitorService.csproj", "{D5150601-12A3-4B98-AB27-1644E632DF85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

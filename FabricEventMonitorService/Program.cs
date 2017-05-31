@@ -6,7 +6,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
-using SceneSkope.ServiceFabric.Seq;
+using ServiceFabric.Serilog.Seq;
+using ServiceFabric.Serilog;
 
 namespace FabricEventMonitorService
 {
@@ -16,14 +17,15 @@ namespace FabricEventMonitorService
         {
             try
             {
-                var seqEventListener = SeqEventListener.Initialise();
+                var logger = SeqLogger.DefaultLogger;
+                SerilogEventListener.Initialise(logger);
+
 
                 ServiceRuntime.RegisterServiceAsync("FabricEventMonitorServiceType",
-                    context => new FabricEventMonitorService(context)).GetAwaiter().GetResult();
+                    context => new FabricEventMonitorService(context, logger)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(FabricEventMonitorService).Name);
 
-                GC.KeepAlive(seqEventListener);
                 // Prevents this host process from terminating so services keep running.
                 Thread.Sleep(Timeout.Infinite);
             }

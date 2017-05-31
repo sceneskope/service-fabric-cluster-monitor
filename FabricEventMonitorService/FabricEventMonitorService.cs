@@ -7,34 +7,20 @@ using System.Threading.Tasks;
 using Microsoft.Diagnostics.Tracing;
 using Microsoft.Diagnostics.Tracing.Session;
 using Microsoft.ServiceFabric.Services.Runtime;
-using SceneSkope.ServiceFabric.Seq;
 using Serilog;
 using Serilog.Events;
 using Serilog.Parsing;
+using ServiceFabric.Serilog;
 
 namespace FabricEventMonitorService
 {
-    internal sealed class FabricEventMonitorService : StatelessService
+    internal sealed class FabricEventMonitorService : SerilogStatelessService
     {
         const string ListenerName = "FabricClusterMonitor";
 
-        private ILogger _log;
-        private ILogger Log
-        {
-            get
-            {
-                var log = _log;
-                if (log == null)
-                {
-                    log = ServiceLogger.CreateLogger(this);
-                    _log = log;
-                }
-                return log;
-            }
-        }
 
-        public FabricEventMonitorService(StatelessServiceContext context)
-            : base(context)
+        public FabricEventMonitorService(StatelessServiceContext context, ILogger logger)
+            : base(context, logger)
         { }
 
         /// <summary>
